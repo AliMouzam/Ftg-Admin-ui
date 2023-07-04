@@ -65,6 +65,7 @@ const AuthProvider = ({ children }) => {
     axios
       .post(authConfig.loginEndpoint, params)
       .then(async response => {
+        console.log("Asad", response)
         params.rememberMe
           ? window.localStorage.setItem(authConfig.storageTokenKeyName, response.data.accessToken)
           : null
@@ -75,6 +76,7 @@ const AuthProvider = ({ children }) => {
         router.replace(redirectURL)
       })
       .catch(err => {
+        console.log('Asad err',err )
         if (errorCallback) errorCallback(err)
       })
   }
